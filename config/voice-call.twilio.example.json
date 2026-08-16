@@ -1,0 +1,86 @@
+{
+  "secrets": {
+    "providers": {
+      "default": {
+        "source": "env"
+      }
+    },
+    "defaults": {
+      "env": "default"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "voice-call": {
+        "enabled": true,
+        "config": {
+          "enabled": true,
+          "provider": "twilio",
+          "twilio": {
+            "accountSid": "${TWILIO_ACCOUNT_SID}",
+            "authToken": {
+              "source": "env",
+              "provider": "default",
+              "id": "TWILIO_AUTH_TOKEN"
+            },
+            "region": "ie1",
+            "recordingAllowTo": []
+          },
+          "fromNumber": "${TWILIO_FROM_NUMBER}",
+          "publicUrl": "${VOICE_CALL_PUBLIC_URL}",
+          "inboundPolicy": "disabled",
+          "sessionScope": "per-call",
+          "outbound": {
+            "defaultMode": "conversation"
+          },
+          "maxDurationSeconds": 300,
+          "maxConcurrentCalls": 1,
+          "serve": {
+            "port": 3334,
+            "bind": "127.0.0.1",
+            "path": "/voice/webhook"
+          },
+          "webhookSecurity": {
+            "trustForwardingHeaders": false
+          },
+          "streaming": {
+            "enabled": false
+          },
+          "realtime": {
+            "enabled": true,
+            "provider": "openai",
+            "streamPath": "/voice/stream",
+            "toolPolicy": "none",
+            "fastContext": {
+              "enabled": false,
+              "fallbackToConsult": false
+            },
+            "agentContext": {
+              "enabled": false,
+              "includeIdentity": false,
+              "includeWorkspaceFiles": false
+            },
+            "instructions": "You are a task-scoped automated phone caller. Use only the current call contract and transcript. Keep replies brief and remain in the explicitly selected language. Never invent facts, make payments, reveal private data, or commit outside the contract. If asked who you are, truthfully say that you are an automated calling assistant. End when the contract's end condition is met.",
+            "providers": {
+              "openai": {
+                "apiKey": {
+                  "source": "env",
+                  "provider": "default",
+                  "id": "OPENAI_API_KEY"
+                },
+                "model": "gpt-realtime-2.1",
+                "voice": "cedar",
+                "noiseReduction": "near_field",
+                "reasoningEffort": "low",
+                "vadThreshold": 0.5,
+                "prefixPaddingMs": 400,
+                "silenceDurationMs": 700,
+                "minBargeInAudioEndMs": 1200
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

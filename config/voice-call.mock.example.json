@@ -1,0 +1,26 @@
+{
+  "plugins": {
+    "entries": {
+      "voice-call": {
+        "enabled": true,
+        "config": {
+          "enabled": true,
+          "provider": "mock",
+          "inboundPolicy": "disabled",
+          "sessionScope": "per-call",
+          "outbound": {
+            "defaultMode": "conversation"
+          },
+          "maxDurationSeconds": 300,
+          "maxConcurrentCalls": 1,
+          "streaming": {
+            "enabled": false
+          },
+          "realtime": {
+            "enabled": false
+          }
+        }
+      }
+    }
+  }
+}

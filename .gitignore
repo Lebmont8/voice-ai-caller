@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+node_modules/
+secrets/
+recordings/
+calls/
+logs/
+*.log
+.DS_Store
+.idea/
+.vscode/

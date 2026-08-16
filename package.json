@@ -1,0 +1,21 @@
+{
+  "name": "voice-ai-caller-openclaw",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Sanitized OpenClaw, Twilio, and OpenAI Realtime integration template for a task-scoped voice AI caller",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/validate.mjs"
+  },
+  "keywords": [
+    "voice-ai",
+    "openclaw",
+    "twilio",
+    "openai-realtime",
+    "phone-agent"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -18,6 +18,7 @@ The agent can call a business, follow a narrow contract, handle short branches, 
 - Inbound calls disabled by default
 - Recording disabled unless a destination is explicitly allowlisted
 - Offline mock configuration for safe testing
+- Optional Telegram live-transcript add-on that edits one status message during a call
 
 ## Architecture
 
@@ -41,6 +42,18 @@ This project does not copy or repackage the OpenClaw voice-call plugin. It provi
 - reusable call-contract examples;
 - security guidance;
 - an offline validator that checks structure and scans for common secret leaks.
+- a transport-injected [Telegram live-transcript reference add-on](addons/telegram-live-transcript/INTEGRATION.md).
+
+## Telegram live transcript add-on
+
+The optional add-on turns normalized Realtime talk events into one editable
+Telegram status message containing the other person's speech, AI responses,
+and the final call state. Long calls roll over into bounded message parts.
+
+The publisher contains no private OpenClaw imports and receives `sendText`,
+`editText`, and a trusted target resolver from the host integration. It is an
+extension point for `@openclaw/voice-call`, not a fork or repackaging of that
+official package. See the [integration contract](addons/telegram-live-transcript/INTEGRATION.md).
 
 ## Requirements
 

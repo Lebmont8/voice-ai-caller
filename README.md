@@ -1,8 +1,6 @@
 # Voice AI Caller
 
-A task-scoped, bilingual phone agent for real outbound conversations. It combines [OpenClaw](https://github.com/openclaw/openclaw), Twilio Programmable Voice, and OpenAI Realtime.
-
-The agent can call a business, follow a narrow contract, handle short branches, ask for missing details, and return a transcript-backed result. Each call starts in an isolated session and has no access to the operator's personal assistant memory.
+This prototype places outbound calls in German or Russian using [OpenClaw](https://github.com/openclaw/openclaw), Twilio Programmable Voice, and OpenAI Realtime. Before placing a call, the operator sets its purpose, limits, and stop condition. After the call, the agent reports what it learned, with the transcript as evidence. Each call starts in a separate session without access to the operator's personal assistant memory.
 
 > Status: live-tested prototype. This repository is a sanitized integration template, not a hosted service or an SLA-backed production system.
 
